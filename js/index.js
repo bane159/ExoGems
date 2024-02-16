@@ -119,17 +119,15 @@
     var PRODUCTS;
     var TRENDINGPRODUCTS;
     var TOPSELLERS;
-    var jsonArrievedOnIndexPage = false
     Promise.all([
-        fetch("/data/trendingProducts.json").then(data => data.json()),
-        fetch("/data/products.json").then(data => data.json()),
-        fetch("/data/topSellers.json").then(data =>data.json())
+        fetch("data/trendingProducts.json").then(data => data.json()),
+        fetch("data/products.json").then(data => data.json()),
+        fetch("data/topSellers.json").then(data =>data.json())
     ])
     .then(([trendingProducts, products, topSellers]) => {
         TRENDINGPRODUCTS = trendingProducts;
         PRODUCTS = products;
         TOPSELLERS = topSellers;
-        jsonArrievedOnIndexPage = true
         
         let trendingProductsAllData = PRODUCTS.filter(x => TRENDINGPRODUCTS.some(t => t.id == x.id));
 
