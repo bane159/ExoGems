@@ -166,7 +166,7 @@ function displayTrendingProducts(data){
           </div>
           <div class="card-body">
             <p>${x.category}</p>
-            <h4 class="card-product__title"><a href="single-product.html">${x.text}</a></h4>
+            <h4 class="card-product__title">${x.text}</h4>
             <p class="card-product__price">$${x.price}</p>
             
           </div>
@@ -197,7 +197,7 @@ function displayTopSellers(data){
             </div>
             <div class="card-body">
               <p>${x.category}</p>
-              <h4 class="card-product__title"><a href="single-product.html">${x.text}</a></h4>
+              <h4 class="card-product__title">${x.text}</h4>
               <p class=" br-sm-text-sellers">${x.unitsSold} Units Sold!</p>
               <p class="card-product__price">$${x.price}</p>
             </div>
