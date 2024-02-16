@@ -120,9 +120,9 @@
     var TRENDINGPRODUCTS;
     var TOPSELLERS;
     Promise.all([
-        fetch("data/trendingProducts.json").then(data => data.json()),
+        fetch("/data/trendingProducts.json").then(data => data.json()),
         fetch("data/products.json").then(data => data.json()),
-        fetch("data/topSellers.json").then(data =>data.json())
+        fetch("../data/topSellers.json").then(data =>data.json())
     ])
     .then(([trendingProducts, products, topSellers]) => {
         TRENDINGPRODUCTS = trendingProducts;

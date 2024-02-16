@@ -28,7 +28,7 @@ window.onload = () => {
 
 }
 
-fetch("/data/products.json").then(data => data.json())
+fetch('data/products.json').then(data => data.json())// /data/products.json
                               .then(products => {
                                     PRODUCTS = products
                                     displayProduts(products)
