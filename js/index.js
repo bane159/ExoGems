@@ -121,9 +121,9 @@
     var TOPSELLERS;
     var jsonArrievedOnIndexPage = false
     Promise.all([
-        fetch("../data/trendingProducts.json").then(data => data.json()),
-        fetch("../data/products.json").then(data => data.json()),
-        fetch("../data/topSellers.json").then(data =>data.json())
+        fetch("/data/trendingProducts.json").then(data => data.json()),
+        fetch("/data/products.json").then(data => data.json()),
+        fetch("/data/topSellers.json").then(data =>data.json())
     ])
     .then(([trendingProducts, products, topSellers]) => {
         TRENDINGPRODUCTS = trendingProducts;
@@ -140,7 +140,7 @@
         displayTopSellers(topSellersAllData);
 
         indexCartCodeExec()// this code is written in a function in main.js but is called here so it happends only when data has arrieved
-    })
+    }).catch(x => console.log(x))
 
 window.onload = () => {
 
