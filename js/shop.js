@@ -28,7 +28,7 @@ window.onload = () => {
 
 }
 
-fetch("../data/products.json").then(data => data.json())
+fetch("..data/products.json").then(data => data.json())
                               .then(products => {
                                     PRODUCTS = products
                                     displayProduts(products)
@@ -36,7 +36,7 @@ fetch("../data/products.json").then(data => data.json())
 
 
                               })
-                              .catch(x => console.log(x));
+                              .catch(x => console.log(x.message));
 
 function displayProduts(data){
 let html = ''
