@@ -42,7 +42,7 @@ fetch('data/products.json').then(data => data.json())// /data/products.json
                               .then(products => {
 
                                   // 
-                                  setTimeout(() => {document.querySelector("#spinner-holder").remove()}, 500)
+                                  setTimeout(() => {document.querySelector("#spinner-holder").remove()}, 100)
                                   // document.getElementsByTagName("body").style = "overflow: scroll!important;"
                                   $("body").css("overflow", "scroll")
                                     PRODUCTS = products

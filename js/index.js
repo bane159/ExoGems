@@ -125,6 +125,11 @@
         fetch("data/topSellers.json").then(data =>data.json())
     ])
     .then(([trendingProducts, products, topSellers]) => {
+
+      setTimeout(() => {document.querySelector("#spinner-holder").remove()}, 100)
+                                  // document.getElementsByTagName("body").style = "overflow: scroll!important;"
+      $("body").css("overflow", "scroll")
+
         TRENDINGPRODUCTS = trendingProducts;
         PRODUCTS = products;
         TOPSELLERS = topSellers;

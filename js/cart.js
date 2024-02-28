@@ -15,6 +15,11 @@ Promise.all([
     fetch("data/products.json").then(data => data.json())
 ])
 .then(([products]) => {
+
+    setTimeout(() => {document.querySelector("#spinner-holder").remove()}, 10)
+                                  // document.getElementsByTagName("body").style = "overflow: scroll!important;"
+    $("body").css("overflow", "scroll")
+
     PRODUCTS = products;
     if(getLS('cart') == null){ //nema proizvoda u lc
         displayEmptyCart();

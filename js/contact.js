@@ -1,6 +1,6 @@
 window.onload = () => {
 
-
+    $("body").css("overflow", "scroll")
     let nameInput = $("#name");
 
 
