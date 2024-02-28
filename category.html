@@ -18,6 +18,10 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <div class="br-modal" id="br-appear-modal">
+    <p>Added To Cart!</p>
+  </div>
+ 
   <!--================ Start Header Menu Area =================-->
 	<header class="header_area">
     <div class="main_menu">
@@ -80,7 +84,7 @@
 
             <ul class="nav-shop d-flex justify-content-center">
               <!-- <li class="nav-item"><button><i class="ti-search"></i></button></li> -->
-              <li class="nav-item"><button id="cartButton"><i class="ti-shopping-cart"></i><span class="nav-shop__circle" id="cartProductsNumber">1</span></button></li>
+              <li class="nav-item"><button id="cartButton"><i class="ti-shopping-cart"></i><span class="nav-shop__circle" id="cartNumberOfProducts">   </span></button></li>
               <!-- <li class="nav-item"><a class="button button-header" href="#">Buy Now</a></li> -->
             </ul>
           </div>
@@ -89,7 +93,7 @@
     </div>
   </header>
 	<!--================ End Header Menu Area =================-->
-
+<!-- <button id="test">Modal</button> -->
 	<!-- ================ start banner area ================= -->	
 	<section class="blog-banner-area" id="category">
 		<div class="container h-100">
@@ -207,7 +211,7 @@
             <div class="mx-2 bg-light-subtle">
               <select class="br-filter" aria-label="Default select example" name="sort" id="sortCriterium">
                 <option selected>Sort</option>
-                <option value="A-Z">A-Z</option>
+                <option value="popularity">Popularity</option>
                 <option value="priceAsc">Price Ascending</option>
                 <option value="priceDesc">Price Descending</option>
               </select>
@@ -393,7 +397,7 @@
 
 
   <!--================ Start footer Area  =================-->	
-	<footer>
+  <footer class="footer">
 		<div class="footer-area">
 			<div class="container">
 				<div class="row section_gap">
@@ -415,26 +419,12 @@
 							<ul class="list">
 								<li><a href="#">Home</a></li>
 								<li><a href="#">Shop</a></li>
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">Product</a></li>
-								<li><a href="#">Brand</a></li>
 								<li><a href="#">Contact</a></li>
+                <li><a href="#">About</a></li>
 							</ul>
 						</div>
 					</div>
-					<div class="col-lg-2 col-md-6 col-sm-6">
-						<div class="single-footer-widget instafeed">
-							<h4 class="footer_title">Gallery</h4>
-							<ul class="list instafeed d-flex flex-wrap">
-								<li><img src="img/gallery/r1.jpg" alt=""></li>
-								<li><img src="img/gallery/r2.jpg" alt=""></li>
-								<li><img src="img/gallery/r3.jpg" alt=""></li>
-								<li><img src="img/gallery/r5.jpg" alt=""></li>
-								<li><img src="img/gallery/r7.jpg" alt=""></li>
-								<li><img src="img/gallery/r8.jpg" alt=""></li>
-							</ul>
-						</div>
-					</div>
+					
 					<div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
 						<div class="single-footer-widget tp_widgets">
 							<h4 class="footer_title">Contact Us</h4>

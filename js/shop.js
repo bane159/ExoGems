@@ -1,4 +1,5 @@
 var PRODUCTS;
+var cartItemCount;
 
 window.onload = () => {
 
@@ -6,25 +7,35 @@ window.onload = () => {
 
     $("#sortCriterium").on("change", () => {
         displayProduts(PRODUCTS)
+        cartInit();
     })
     // document.querySelector("")
     $("input[name*='category']").on("click",  () => {
       displayProduts(PRODUCTS)
+      cartInit();
 
     })
     $("input[name*='material']").on("click", ()=>{
       displayProduts(PRODUCTS)
+      cartInit();
     })
     $("#searchBar").on("keyup", () =>{
       console.log("KURAC")
       displayProduts(PRODUCTS)
+      cartInit();
     })
     $("#initSeatchBtn").on("click", () => {
       displayProduts(PRODUCTS)
+      cartInit();
     })
+    // $("#cartButton").on("click", () => window.location = "cart.html");
+    
 
-
-
+    if(!getLS('cart')){
+      document.querySelector("#cartNumberOfProducts").innerHTML = "0"
+    }
+    else getCartNumber()
+    
 
 }
 
@@ -35,8 +46,77 @@ fetch('data/products.json').then(data => data.json())// /data/products.json
                                     calculateNumberOfCategories(products)
 
 
+                                    // if(getLS("cart"))
+                                    //    getCartNumber()                                    
+                                    cartInit();
+
+                                    
+                                    
+
                               })
                               .catch(x => console.log(x.message));
+
+
+  function cartInit() {
+    let cartBtns = document.getElementsByClassName("addToCard")
+    console.log(cartBtns)
+        for (let i of cartBtns) {
+            console.log(i)
+            i.addEventListener("click", (e) => {
+              e.preventDefault()
+              // console.log("START")
+              let modal = document.getElementById("br-appear-modal")
+              let productId = $(i).data("id")
+              modal.innerHTML = `<p>Added ${PRODUCTS.find(x => x.id == parseInt($(i).data("id"))).name} to cart!</p>`
+                modal.classList.add('animAppear');
+                setTimeout( () => {
+                  modal.classList.remove('animAppear');
+                }, 1000)
+               
+                console.log(productId)
+                
+                if(getLS('cart')){
+                  let cart = getLS('cart');
+      
+                  if(cart.find(c => c.id == productId)){
+                      let product = cart.find(c => c.id == productId)
+                      product.quantity++;
+                  }else{
+                      let newItem = {
+                          id: productId,
+                          quantity: 1
+                      }
+                      cart.push(newItem)
+                  }
+                  setLS('cart', cart);
+              }else{ //set for the first time
+                  let item = {
+                      id: productId,
+                      quantity: 1
+                  }
+      
+                  setLS('cart', [item])
+              }
+              getCartNumber()   
+
+            })
+          }
+
+}
+
+
+function getCartNumber(){
+  cartItemCount = getLS('cart').length
+  document.querySelector("#cartNumberOfProducts").innerHTML = cartItemCount
+}
+function getLS(name){
+  return JSON.parse(localStorage.getItem(name))
+}
+
+function setLS(name, value){
+  localStorage.setItem(name, JSON.stringify(value)) 
+}
+
 
 function displayProduts(data){
 let html = ''
@@ -69,7 +149,7 @@ let html = ''
           <div class="card-product__img">
             <img class="card-img" src="${x.img.src}" alt="${x.img.alt}">
             <ul class="card-product__imgOverlay">
-              <li><button><i class="ti-shopping-cart"></i></button></li>
+              <li><button class = "addToCard" data-id="${x.id}"><i class="ti-shopping-cart"></i></button></li>
               <li><button><i class="ti-heart"></i></button></li>
             </ul>
           </div>
@@ -101,8 +181,8 @@ function sortedData(data){
     if(sortCriterium.value == 'priceDesc'){
         sortedData.sort((a,b) => b.price - a.price)
     }
-    // if(sortCriterium.value == 'A-Z'){
-    //   sortedData.sort((a,b) => a.name.indexOf(0) + b.name.indexOf(0))
+    // if(sortCriterium.value == 'popularity'){
+    //   sortedData.sort((a,b) => b.unitsSold - a.unitsSold)
     // }
     
     return sortedData
