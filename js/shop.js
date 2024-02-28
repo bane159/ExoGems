@@ -41,6 +41,10 @@ window.onload = () => {
 
 fetch('data/products.json').then(data => data.json())// /data/products.json
                               .then(products => {
+
+                                  document.querySelector("#spinner-holder").remove()
+                                  // document.getElementsByTagName("body").style = "overflow: scroll!important;"
+                                  $("body").css("overflow", "scroll")
                                     PRODUCTS = products
                                     displayProduts(products)
                                     calculateNumberOfCategories(products)
@@ -181,9 +185,9 @@ function sortedData(data){
     if(sortCriterium.value == 'priceDesc'){
         sortedData.sort((a,b) => b.price - a.price)
     }
-    // if(sortCriterium.value == 'popularity'){
-    //   sortedData.sort((a,b) => b.unitsSold - a.unitsSold)
-    // }
+    if(sortCriterium.value == 'popularity'){
+      sortedData.sort((a,b) => b.unitsSold - a.unitsSold)
+    }
     
     return sortedData
     

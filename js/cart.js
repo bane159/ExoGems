@@ -20,14 +20,15 @@ Promise.all([
         displayEmptyCart();
 
     }
-    else{ //ima proizvoda u lc
+    else{ //ima proizvoda u lc u cart
         displayCartProducts(PRODUCTS, getLS('cart'))
 
         changeQuantity()//apdejtuje ls nakon promene quantity 
         refreshCart() // rekurzivna funkcija za refreshovanje korpe.
+        removeItemFromCart()
+        // refreshCartAfterRemove()
+
        
-
-
 
         
 
@@ -240,7 +241,6 @@ function displayEmptyCart() {
             console.log(wholeCart)
 
             localStorage.setItem('cart', JSON.stringify(wholeCart))
-            // displayCartProducts(PRODUCTS, getLS("cart"))
         })
 
         
@@ -253,11 +253,49 @@ function displayEmptyCart() {
 
 
 
-function  refreshCart(){ //Koriscenje rekurzije kako bi se uvek refresovali itemi.
+function  refreshCart(){ //Koriscenje rekurzije kako bi se uvek refresovali itemi nakon svake promene quantity da bi se refresh.
     let quantityBtns = document.querySelectorAll(".quantityInput")
     $(quantityBtns).on("blur",() => {
         displayCartProducts(PRODUCTS, getLS("cart"))
         changeQuantity()
+        removeItemFromCart()
         refreshCart()
     })
+}
+
+function removeItemFromCart(){
+    var removeFromCartBtns =  document.querySelectorAll(".removeItem")
+    for (let item of removeFromCartBtns){
+            item.addEventListener("click", () => {
+            let wholeCart = getLS('cart')
+            console.log(wholeCart)
+            let productWithout = wholeCart.filter(x => x.id != $(item).data('id'))
+            
+            console.log(productWithout)
+            if(productWithout.length > 0){
+                setLS('cart', productWithout)
+                displayCartProducts(PRODUCTS, getLS("cart"))
+                refreshCartAfterRemove()
+            }
+            else{
+                clearCart()
+            }
+
+            // if(getLS('cart') == null){ //nema proizvoda u lc
+            //     displayEmptyCart();
+        
+            // }
+            // else{
+            //     displayCartProducts(PRODUCTS, getLS('cart'))
+            // }
+            
+        })
+    }
+}
+function refreshCartAfterRemove() {
+    displayCartProducts(PRODUCTS, getLS("cart"))
+    removeItemFromCart()
+    changeQuantity()
+
+    // refreshCartAfterRemove()
 }
