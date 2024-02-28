@@ -20,7 +20,6 @@ window.onload = () => {
       cartInit();
     })
     $("#searchBar").on("keyup", () =>{
-      console.log("KURAC")
       displayProduts(PRODUCTS)
       cartInit();
     })
@@ -42,7 +41,8 @@ window.onload = () => {
 fetch('data/products.json').then(data => data.json())// /data/products.json
                               .then(products => {
 
-                                  document.querySelector("#spinner-holder").remove()
+                                  // 
+                                  setTimeout(() => {document.querySelector("#spinner-holder").remove()}, 500)
                                   // document.getElementsByTagName("body").style = "overflow: scroll!important;"
                                   $("body").css("overflow", "scroll")
                                     PRODUCTS = products
