@@ -247,7 +247,7 @@ function displayEmptyCart() {
 
             localStorage.setItem('cart', JSON.stringify(wholeCart))
         })
-
+        refreshCart()
         
 
 
@@ -299,8 +299,8 @@ function removeItemFromCart(){
 }
 function refreshCartAfterRemove() {
     displayCartProducts(PRODUCTS, getLS("cart"))
-    removeItemFromCart()
     changeQuantity()
+    removeItemFromCart()
 
     // refreshCartAfterRemove()
 }

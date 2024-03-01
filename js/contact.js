@@ -94,7 +94,7 @@ window.onload = () => {
             }
         }
         if(br === 0){
-            $("#sexError").html("Choose sex ( ͡° ͜ʖ ͡°)").removeClass("d-none").addClass("d-block")
+            $("#sexError").html("Choose sex").removeClass("d-none").addClass("d-block")
         }
         else{
             $("#sexError").removeClass("d-block").addClass("d-none")
