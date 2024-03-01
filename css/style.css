@@ -113,3 +113,9 @@
 body{
     overflow: hidden;
 }
+.br-about-custom{
+    margin: 100px 0px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
