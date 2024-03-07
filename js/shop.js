@@ -124,11 +124,16 @@ function setLS(name, value){
 
 function displayProduts(data){
 let html = ''
-// data = filter(data)
+    // data = filter(data)
+
     data = sortedData(data)
+
     data = filteredDataCategories(data)
+
     data = filteredDataMaterials(data)
+
     data = seatchedData(data)
+
     if(data.length == 0){
 
       document.querySelector("#shop-products").innerHTML = 

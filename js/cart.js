@@ -264,7 +264,7 @@ function  refreshCart(){ //Koriscenje rekurzije kako bi se uvek refresovali item
         displayCartProducts(PRODUCTS, getLS("cart"))
         changeQuantity()
         removeItemFromCart()
-        refreshCart()
+        
     })
 }
 
