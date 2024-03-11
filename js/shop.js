@@ -75,7 +75,7 @@ fetch('data/products.json').then(data => data.json())// /data/products.json
                 modal.classList.add('animAppear');
                 setTimeout( () => {
                   modal.classList.remove('animAppear');
-                }, 1000)
+                }, 800)
                
                 console.log(productId)
                 
@@ -280,23 +280,6 @@ function seatchedData(data) {
   }
   return data;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function calculateNumberOfCategories(PRODUCTS){
